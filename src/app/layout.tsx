@@ -19,7 +19,7 @@ type RootLayoutProps = Readonly<{
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="ja" suppressHydrationWarning>
       <head />
       <body
         className={cn(
@@ -27,7 +27,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
           fontSans.variable
         )}
       >
-        {children}
+        <div className="flex min-h-screen flex-col">
+          <div className="mx-auto flex size-full max-w-7xl flex-1 items-start gap-x-8 px-4 py-10 sm:px-6 lg:px-8">
+            <main className="flex-1">{children}</main>
+          </div>
+        </div>
       </body>
     </html>
   );
