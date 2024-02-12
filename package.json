@@ -7,9 +7,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "new-migrate": "pnpm prisma migrate dev --name",
+    "migrate": "pnpm prisma migrate dev",
+    "generate": "pnpm prisma generate",
     "prepare": "husky"
   },
   "dependencies": {
+    "@prisma/client": "5.9.1",
     "@radix-ui/react-slot": "^1.0.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
