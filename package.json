@@ -25,7 +25,8 @@
     "react": "^18",
     "react-dom": "^18",
     "tailwind-merge": "^2.2.1",
-    "use-debounce": "^10.0.0"
+    "use-debounce": "^10.0.0",
+    "valibot": "^0.28.1"
   },
   "devDependencies": {
     "@types/node": "^20",

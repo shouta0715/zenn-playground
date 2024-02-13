@@ -11,13 +11,15 @@ type FetchLikeProps = {
   trigger: "like" | "unlike";
 };
 
-export async function fetchLike({ postId, trigger }: FetchLikeProps) {
+export async function fetchLike({ trigger, ...props }: FetchLikeProps) {
   const result = await fetch("/api/likes", {
     method: trigger === "like" ? "POST" : "DELETE",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ postId }),
+    body: JSON.stringify({
+      ...props,
+    }),
   });
 
   if (!result.ok) throw new Error("エラーが発生しました。");
