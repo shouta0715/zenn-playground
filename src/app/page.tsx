@@ -11,9 +11,7 @@ export default async function Home() {
 
   return (
     <div>
-      <nav>
-        <LikeButton initialLiked={liked !== null} />
-      </nav>
+      <LikeButton initialLiked={liked !== null} />
     </div>
   );
 }
