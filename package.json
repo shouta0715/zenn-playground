@@ -11,6 +11,7 @@
     "migrate": "pnpm prisma migrate dev",
     "generate": "pnpm prisma generate",
     "studio": "pnpm prisma studio",
+    "preview": "rm -rf .next && next build && next start",
     "prepare": "husky"
   },
   "dependencies": {

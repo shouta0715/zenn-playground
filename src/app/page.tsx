@@ -1,4 +1,6 @@
+import Link from "next/link";
 import { LikeButton } from "@/components/like-button";
+import { buttonVariants } from "@/components/ui/button";
 import { prisma } from "@/lib/prisma";
 
 export default async function Home() {
@@ -12,6 +14,15 @@ export default async function Home() {
   return (
     <div>
       <LikeButton initialLiked={liked !== null} />
+
+      <Link
+        className={buttonVariants({
+          className: "mt-10",
+        })}
+        href="/segment-config"
+      >
+        Go To Segment Config
+      </Link>
     </div>
   );
 }
