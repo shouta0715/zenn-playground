@@ -14,6 +14,7 @@ export default async function Home() {
   return (
     <div>
       <LikeButton initialLiked={liked !== null} />
+
       <Link
         className={buttonVariants({
           className: "mt-10",
