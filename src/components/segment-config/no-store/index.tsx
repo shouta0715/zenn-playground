@@ -1,15 +1,14 @@
-import { BASE_URL } from "@/lib/constant";
+import { SSR_URL } from "@/lib/constant";
 
 export async function NoStore() {
-  const data = await fetch(BASE_URL, {
+  const { now } = await fetch(SSR_URL, {
     cache: "no-store",
-  }).then((res) => res.text());
+  }).then((res) => res.json());
 
   return (
     <div>
       <h1>No Store</h1>
-      <p>Open the console to see the result</p>
-      <p>{data}</p>
+      <p>{now}</p>
     </div>
   );
 }

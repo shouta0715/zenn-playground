@@ -1,31 +1,23 @@
 import Link from "next/link";
-import React from "react";
+import React, { Suspense } from "react";
 import { CacheFetch } from "@/components/segment-config/cache";
-import { Revalidate } from "@/components/segment-config/revalidate";
 import { buttonVariants } from "@/components/ui/button";
-import { BASE_URL } from "@/lib/constant";
 
-export const dynamic = "error";
+export const fetchCache = "force-no-store";
 
 export default async function page() {
-  const data = await fetch(BASE_URL, {
-    next: {
-      revalidate: 0,
-    },
-  });
-
-  const text = await data.text();
+  const params = Array.from({ length: 10 }, (_, i) => i + 1);
 
   return (
     <div>
       <h1 className="text-center text-4xl font-bold text-primary">
         Segment Config
       </h1>
-      <p>{text}</p>
-      <div className="grid gap-10">
-        <CacheFetch />
 
-        <Revalidate />
+      <div className="grid gap-10">
+        <Suspense fallback={<div>Loading...</div>}>
+          <CacheFetch />
+        </Suspense>
       </div>
       <Link
         className={buttonVariants({
@@ -35,6 +27,24 @@ export default async function page() {
       >
         Back to home
       </Link>
+      <Suspense fallback={<div>Loading...</div>}>
+        <div className="mt-10 grid grid-cols-5 gap-4">
+          {params.map((param) => {
+            return (
+              <Link
+                key={param}
+                className={buttonVariants({
+                  className: "flex flex-col items-center",
+                })}
+                href={`/segment-config/${param}`}
+              >
+                <span>{`Segment Config ${param}`}</span>
+                <span>{param > 5 ? "Dynamic Render " : "Static Render"}</span>
+              </Link>
+            );
+          })}
+        </div>
+      </Suspense>
     </div>
   );
 }

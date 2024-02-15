@@ -1,17 +1,17 @@
-import { BASE_URL } from "@/lib/constant";
+import { ISR_URL } from "@/lib/constant";
 
 export async function Revalidate() {
-  const data = await fetch(BASE_URL, {
+  const { now } = await fetch(ISR_URL, {
     next: {
-      revalidate: 0,
+      revalidate: 10,
     },
-  }).then((res) => res.text());
+  }).then((res) => res.json());
 
   return (
     <div>
       <h1>Revalidate</h1>
-      <p>Open the console to see the result</p>
-      <p>{data}</p>
+
+      <p>{now}</p>
     </div>
   );
 }
