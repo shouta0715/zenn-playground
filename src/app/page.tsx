@@ -1,4 +1,5 @@
 import Link from "next/link";
+
 import { CategorySelector } from "@/components/category-selecter";
 import { LikeButton } from "@/components/like-button";
 import { buttonVariants } from "@/components/ui/button";

@@ -40,6 +40,9 @@ const handler = async (req: Request) => {
     const categories = await searchCategories(q, 10, outputOffset);
     const hasMore = categories.length >= 10;
 
+    // eslint-disable-next-line no-promise-executor-return
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
     return NextResponse.json({ categories, hasMore }, { status: 200 });
   } catch (error) {
     return handleApiError({ error });
