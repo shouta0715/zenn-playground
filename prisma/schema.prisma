@@ -36,3 +36,10 @@ model Like {
 
   @@unique([userId, postId])
 }
+
+model Category {
+  name        String  @id
+  description String? 
+
+  @@map("categories")
+}
